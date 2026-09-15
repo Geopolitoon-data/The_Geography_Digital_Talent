@@ -433,7 +433,7 @@ search.addEventListener('input',()=>{const v=search.value.trim().toLowerCase();
   if(regionIndex[v]){activeRegion=regionIndex[v];selectedId=null;applyMap();showRegion(activeRegion);return;}
   if(nameIndex[v]){selectedId=nameIndex[v];activeRegion=null;applyMap();const c=CMAP[selectedId];renderTop(c.name,c.region,c.n,c.top);}});
 
-Promise.all([d3.json('data/countries-110m.json'),d3.json('data/cmap.json')]).then(([world,cmap])=>{
+Promise.all([d3.json('countries-110m.json'),d3.json('cmap.json')]).then(([world,cmap])=>{
   CMAP=cmap;Object.keys(CMAP).forEach(id=>{nameIndex[CMAP[id].name.toLowerCase()]=id;});
   dl.innerHTML=[...ORD,...Object.values(CMAP).map(c=>c.name).sort()].map(o=>'<option value="'+o+'"></option>').join('');
   const feats=topojson.feature(world,world.objects.countries).features;

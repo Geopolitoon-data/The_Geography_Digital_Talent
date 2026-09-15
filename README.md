@@ -29,8 +29,8 @@ Settings → Pages → *Deploy from a branch* → `main` / `root`. Your site app
 | Path | Purpose |
 |------|---------|
 | `index.html` | The entire article — HTML, CSS and JS in one file. |
-| `data/cmap.json` | Per-country top-3 job concentrations (location quotients), keyed by ISO numeric code. |
-| `data/countries-110m.json` | World topology (world-atlas / Natural Earth, 110m). |
+| `cmap.json` | Per-country top-3 job concentrations (location quotients), keyed by ISO numeric code. |
+| `countries-110m.json` | World topology (world-atlas / Natural Earth, 110m). |
 
 External libraries (D3, TopoJSON) and the Montserrat font load from public CDNs, so no
 dependencies are vendored.
