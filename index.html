@@ -1,0 +1,449 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Geography of Digital Talent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap">
+<style>
+:root{
+  --paper:#F1F2F8; --card:#FFFFFF; --card2:#FAFBFF;
+  --navy:#0F1374; --ink:#23264D; --mute:#6E729B;
+  --gold:#DBB67D; --gold-d:#B98A3E; --spark:#FF4901; --salmon:#FF9E79; --peri:#4B5BCB;
+  --line:#E3E4EF; --nodata:#DFE1EC; --maxw:1180px; --font:'Montserrat',-apple-system,'Segoe UI',Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);font-weight:400;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.eyebrow{font-size:.82rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-d)}
+h1,h2,h3{font-weight:800;line-height:1.05;text-wrap:balance;margin:0;color:var(--navy)}
+a{color:var(--navy)}
+.dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(15,19,116,.45) 1.1px,transparent 1.2px);background-size:24px 24px;opacity:.05;-webkit-mask-image:radial-gradient(60% 60% at 12% 90%,#000,transparent);mask-image:radial-gradient(60% 60% at 12% 90%,#000,transparent);pointer-events:none}
+.ring{position:absolute;border:2px solid var(--peri);border-radius:50%;opacity:.14;pointer-events:none}
+
+.hero{position:relative;overflow:hidden;padding:14vh 0 10vh}
+.hero .ring.a{width:340px;height:340px;top:-90px;right:-70px}
+.hero .ring.b{width:200px;height:200px;top:40px;right:120px;border-color:var(--gold)}
+.hero h1{font-size:clamp(2.6rem,7vw,5.2rem);letter-spacing:-.015em}
+.hero h1 .thin{display:block;font-weight:300;font-size:.42em;letter-spacing:.01em;color:var(--ink);margin-bottom:.4em}
+.hero h1 em{font-style:normal;color:var(--gold-d)}
+.hero .dek{max-width:40ch;margin:1.8rem 0 0;font-size:1.2rem;font-weight:400;color:var(--ink)}
+.hero .meta{margin-top:2.6rem;display:flex;gap:2.4rem;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:1.4rem}
+.hero .meta div{display:flex;flex-direction:column}
+.hero .meta b{font-size:1.7rem;font-weight:800;font-variant-numeric:tabular-nums;color:var(--navy)}
+.hero .meta span{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.scrollcue{margin-top:2.6rem;font-size:.85rem;color:var(--mute);letter-spacing:.06em;display:flex;align-items:center;gap:.6rem}
+.scrollcue .bounce{display:inline-block;animation:bob 1.8s ease-in-out infinite;color:var(--spark)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+
+.scrolly{position:relative;max-width:var(--maxw);margin:0 auto;padding:0 28px;display:grid;grid-template-columns:1.02fr .88fr;gap:44px}
+.graphic{position:sticky;top:0;height:100vh;display:flex;align-items:center}
+.stage{position:relative;width:100%;height:min(84vh,760px);background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 12px 40px rgba(15,19,116,.08);overflow:hidden}
+.stage .dots{opacity:.06}
+.scene{position:absolute;inset:0;padding:26px 30px 22px;opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease;pointer-events:none;display:flex;flex-direction:column}
+.scene.active{opacity:1;transform:none}
+.scene .cap{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-d);font-weight:700;flex:none}
+.scene h3{font-size:1.42rem;margin:.35rem 0 0;font-weight:800;flex:none}
+.scene .sub{font-size:.86rem;color:var(--mute);margin-top:.25rem;flex:none}
+.scene .body{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0;margin-top:14px}
+.foot{font-size:.72rem;color:var(--mute);flex:none;margin-top:10px}
+
+.steps{padding:12vh 0 16vh}
+.step{min-height:78vh;display:flex;flex-direction:column;justify-content:center}
+.step .n{font-size:.76rem;font-weight:700;letter-spacing:.16em;color:var(--gold-d)}
+.step h2{font-size:clamp(1.7rem,3.3vw,2.4rem);margin:.5rem 0 .9rem;letter-spacing:-.01em}
+.step p{font-size:1.14rem;color:var(--ink);margin:0 0 1rem;max-width:35ch}
+.step p .hl{color:var(--navy);font-weight:700}
+.step p .sp{color:var(--spark);font-weight:700}
+
+.bignum{margin:auto;text-align:center}
+.bignum b{font-size:4.4rem;font-weight:800;font-variant-numeric:tabular-nums;color:var(--navy);display:block;letter-spacing:-.02em;line-height:1}
+.bignum span{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-d);font-weight:700}
+.poolmeta{display:flex;justify-content:center;gap:34px;margin-top:30px}
+.poolmeta div{text-align:center}
+.poolmeta b{font-size:1.7rem;font-weight:800;color:var(--navy);font-variant-numeric:tabular-nums;display:block}
+.poolmeta span{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+
+.rows{display:flex;flex-direction:column;gap:9px}
+.row{display:grid;grid-template-columns:118px 1fr 52px;align-items:center;gap:12px}
+.row .lab{font-size:.82rem;font-weight:600;color:var(--ink);text-align:right;line-height:1.15}
+.track{height:20px;border-radius:5px;background:#EDEEF6;position:relative;overflow:hidden}
+.track .fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:5px;background:var(--peri);transition:width 1s cubic-bezier(.2,.7,.2,1)}
+.active .track .fill{width:var(--w)}
+.row .val{font-size:.86rem;font-weight:800;font-variant-numeric:tabular-nums;color:var(--navy);text-align:right}
+
+.stack{display:flex;height:44px;border-radius:9px;overflow:hidden;border:1px solid var(--line)}
+.stack span{flex-grow:0;transition:flex-grow .9s ease}
+.active .stack span{flex-grow:var(--g)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px;font-size:.82rem;color:var(--ink)}
+.legend span{display:flex;align-items:center}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:7px}
+.legend b{font-weight:700;margin-left:5px;color:var(--navy);font-variant-numeric:tabular-nums}
+
+.mix{display:flex;flex-direction:column;gap:18px;margin:auto 0}
+.mixrow>b{font-size:.8rem;color:var(--ink);font-weight:600;display:block;margin-bottom:7px}
+.mixbar{display:flex;height:34px;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.mixnote{font-size:.9rem;color:var(--navy);font-weight:600;text-align:center;margin-top:6px}
+.ybars{display:flex;flex-direction:column;gap:8px}
+.ybarrow{display:grid;grid-template-columns:118px 1fr;align-items:center;gap:12px}
+.ybarrow .ylab{font-size:.8rem;font-weight:600;color:var(--ink);text-align:right;line-height:1.1}
+.ybar{display:flex;height:23px;border-radius:5px;overflow:hidden;background:#EDEEF6}
+.ybar .seg{height:100%;width:0;transition:width .95s cubic-bezier(.2,.7,.2,1);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden}
+.active .ybar .seg{width:var(--w)}
+.ybar .seg.swe{background:#0F1374}
+.ybar .seg.da{background:#DBB67D}
+.ybar .seg.dai{background:#4B5BCB}
+.ybar .seg.oth{background:#CDD0E6}
+.ylegend{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:18px;font-size:.8rem;color:var(--ink)}
+.ylegend span{display:flex;align-items:center}
+.ylegend i{width:12px;height:12px;border-radius:3px;margin-right:7px;display:inline-block}
+
+.spot{display:flex;flex-direction:column;gap:16px;margin:auto 0}
+.spot .grp>b{font-size:.82rem;color:var(--navy);font-weight:700;display:block;margin-bottom:8px}
+.pills{display:flex;gap:9px;flex-wrap:wrap}
+.pill{display:flex;align-items:baseline;gap:7px;background:var(--card2);border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+.pill .c{font-size:.85rem;font-weight:600;color:var(--ink)}
+.pill .x{font-size:.85rem;font-weight:800;color:var(--gold-d);font-variant-numeric:tabular-nums}
+.pill.hot{border-color:var(--spark)}
+.pill.hot .x{color:var(--spark)}
+
+.dblegend{display:flex;gap:20px;font-size:.78rem;color:var(--ink);margin-bottom:10px;flex:none}
+.dot-exp{display:inline-block;width:13px;height:13px;border-radius:50%;border:2.5px solid var(--mute);background:var(--card);vertical-align:-2px;margin-right:6px}
+.dot-obs{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--spark);vertical-align:-2px;margin-right:6px}
+.db{display:flex;flex-direction:column;gap:0}
+.dbrow{display:grid;grid-template-columns:104px 1fr 84px;align-items:center;gap:10px;height:32px}
+.dbrow .lab{font-size:.77rem;font-weight:600;color:var(--ink);text-align:right;line-height:1.05}
+.dbtrack{position:relative;height:100%;border-left:1px dashed var(--line)}
+.dbtrack .ln{position:absolute;top:50%;height:2px;background:var(--line);transform:translateY(-50%);width:0;transition:width .9s ease,left .9s ease}
+.dbtrack .exp{position:absolute;top:50%;width:13px;height:13px;border-radius:50%;border:2.5px solid var(--mute);background:var(--card);transform:translate(-50%,-50%);z-index:2}
+.dbtrack .obs{position:absolute;top:50%;width:15px;height:15px;border-radius:50%;transform:translate(-50%,-50%);left:var(--ex);transition:left .9s cubic-bezier(.2,.7,.2,1);z-index:3}
+.active .dbtrack .obs{left:var(--ob)}
+.dbrow .verd{font-size:.72rem;font-weight:700;text-align:right;line-height:1}
+.axis{display:flex;justify-content:space-between;font-size:.68rem;color:var(--mute);margin-top:8px;padding:0 84px 0 104px;flex:none}
+
+.titles{display:flex;flex-direction:column;gap:11px;margin:auto 0}
+.titlerow{display:flex;align-items:center;gap:14px;background:var(--card2);border:1px solid var(--line);border-radius:11px;padding:13px 16px}
+.titlerow .r{font-size:1.15rem;font-weight:800;color:var(--gold-d);width:24px}
+.titlerow .t{font-size:1.02rem;font-weight:700;color:var(--navy)}
+.titlerow .g{margin-left:auto;font-size:.74rem;color:var(--mute)}
+
+.close .body{gap:16px;justify-content:center}
+.crow2{display:flex;gap:14px;align-items:flex-start}
+.crow2 .k{color:var(--gold-d);font-weight:800;font-size:.88rem;min-width:120px}
+.crow2 .v{font-size:.92rem;color:var(--ink)}
+
+/* ATLAS */
+.atlas{position:relative;overflow:hidden;padding:9vh 0 8vh;background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.atlas .dots{opacity:.05}
+.atlas .lead{max-width:56ch;margin:1rem 0 0;font-size:1.15rem;color:var(--ink)}
+.atlas-grid{display:grid;grid-template-columns:1fr 300px;gap:26px;margin-top:2.4rem;align-items:start}
+#map{width:100%}
+#map svg{width:100%;height:auto;display:block}
+.geo{stroke:var(--card);stroke-width:.4;cursor:pointer;transition:opacity .18s,filter .18s}
+.geo.dim{opacity:.28}
+.geo.hi{stroke:var(--navy);stroke-width:1.1}
+.panel{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:18px 18px 20px;position:sticky;top:20px;min-height:230px}
+.panel .ph{font-size:.9rem;color:var(--mute)}
+.panel .pc{font-size:1.25rem;font-weight:800;color:var(--navy)}
+.panel .pr{font-size:.78rem;font-weight:700;letter-spacing:.04em;display:inline-flex;align-items:center;gap:6px;margin-top:3px}
+.panel .pr i{width:11px;height:11px;border-radius:3px;display:inline-block}
+.panel .pn{font-size:.74rem;color:var(--mute);margin-top:2px}
+.panel .t3{margin-top:16px;display:flex;flex-direction:column;gap:9px}
+.panel .t3row{}
+.panel .t3row .tf{display:flex;justify-content:space-between;font-size:.82rem;font-weight:600;color:var(--ink);margin-bottom:4px}
+.panel .t3row .tf b{color:var(--gold-d);font-weight:800;font-variant-numeric:tabular-nums}
+.panel .t3row .tf .pg{color:var(--mute);font-weight:600;font-size:.76rem;margin-left:6px;font-variant-numeric:tabular-nums}
+.panel .t3bar{height:7px;border-radius:4px;background:#EAEBF4;overflow:hidden}
+.panel .t3bar i{display:block;height:100%;background:var(--gold);border-radius:4px}
+.atlas-controls{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:1.8rem}
+.searchbox{position:relative;display:flex;align-items:center}
+.searchbox .si{position:absolute;left:13px;font-size:1.15rem;color:var(--mute);pointer-events:none}
+#mapsearch{font-family:var(--font);font-size:.92rem;padding:11px 15px 11px 36px;border:1px solid var(--line);border-radius:10px;background:var(--card2);color:var(--ink);width:320px;max-width:100%}
+#mapsearch:focus{outline:none;border-color:var(--peri);box-shadow:0 0 0 3px rgba(75,91,203,.15)}
+.maphint{font-size:.84rem;color:var(--mute)}
+.maphint b{color:var(--navy);font-weight:700}
+.reglegend{display:flex;flex-wrap:wrap;gap:8px 10px;margin:16px 0 20px}
+.rl{display:flex;align-items:center;gap:7px;font-size:.8rem;color:var(--ink);background:var(--card2);border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer}
+.rl i{width:12px;height:12px;border-radius:50%}
+.rl small{color:var(--mute);font-size:.72rem}
+.rl.off{opacity:.4}
+.substrip{font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-d);margin:34px 0 12px}
+.patterns{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pat{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:17px 19px;border-top:3px solid var(--gold)}
+.pat b{display:block;font-size:1rem;color:var(--navy);font-weight:800;margin-bottom:6px;line-height:1.2}
+.pat span{font-size:.9rem;color:var(--ink);line-height:1.5}
+.spotstrip{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:16px}
+.spotcard{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.spotcard>b{font-size:.82rem;color:var(--navy);font-weight:700;display:block;margin-bottom:10px}
+
+.outro{position:relative;overflow:hidden;padding:11vh 0 8vh;text-align:center;background:var(--navy)}
+.outro .ring.a{width:260px;height:260px;bottom:-120px;left:-60px;border-color:var(--peri);opacity:.3}
+.outro .eyebrow{color:var(--gold)}
+.outro h2{font-size:clamp(1.8rem,4vw,2.7rem);color:#fff}
+.outro p{max-width:52ch;margin:1.2rem auto 0;color:#D7DAF5;font-size:1.08rem}
+.concl{max-width:800px;margin:2rem auto 0;display:flex;flex-direction:column;gap:16px;text-align:left}
+.cpoint{font-size:1.02rem;color:#D7DAF5;line-height:1.55}
+.cpoint b{color:var(--gold);font-weight:800}
+.closer{max-width:660px;margin:2rem auto 0;color:#fff;font-size:1.14rem;font-weight:600}
+.brandlock{margin-top:3rem;display:flex;flex-direction:column;align-items:center;gap:.35rem}
+.brandlock .em{font-size:1.7rem;font-weight:800;letter-spacing:-.01em;color:#fff}
+.brandlock .em i{font-style:normal;color:var(--spark)}
+.brandlock small{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+
+@media (max-width:860px){
+  .scrolly{grid-template-columns:1fr;gap:0}
+  .graphic{position:sticky;top:0;height:56vh;z-index:2;background:var(--paper);padding-top:8px}
+  .stage{height:calc(56vh - 16px)}
+  .steps{padding:2vh 0 12vh}
+  .step{min-height:auto;padding:24vh 0 8vh}
+  .step:first-child{padding-top:3vh}
+  .scene h3{font-size:1.2rem}
+  .row{grid-template-columns:92px 1fr 46px}
+  .dbrow{grid-template-columns:84px 1fr 64px}
+  .axis{padding:0 64px 0 84px}
+  .atlas-grid{grid-template-columns:1fr}
+  .panel{position:static}
+  .spotstrip{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.scene{opacity:1}}
+</style>
+
+<header class="hero">
+  <div class="dots"></div><div class="ring a"></div><div class="ring b"></div>
+  <div class="wrap">
+    <p class="eyebrow">Emerging &nbsp;·&nbsp; Global Digital Leaders 2026</p>
+    <h1><span class="thin">The geography of</span> digital <em>talent</em></h1>
+    <p class="dek">We gathered 194,482 of the world's digital leaders across 160 countries — and looked at what their jobs reveal about where different kinds of talent gather.</p>
+    <div class="meta">
+      <div><b>194,482</b><span>Profiles</span></div>
+      <div><b>160</b><span>Countries</span></div>
+      <div><b>9</b><span>World regions</span></div>
+      <div><b>22</b><span>Job families</span></div>
+    </div>
+    <p class="scrollcue"><span class="bounce">↓</span> Scroll to begin</p>
+  </div>
+</header>
+
+<section class="scrolly" id="s1">
+  <div class="graphic"><div class="stage"><div class="dots"></div>
+    <figure class="scene" data-scene="0" style="margin:0">
+      <span class="cap">The dataset</span><h3>Who's in the pool</h3>
+      <div class="body">
+        <div class="bignum"><b>194,482</b><span>digital-leader profiles</span></div>
+        <div class="poolmeta"><div><b>160</b><span>countries</span></div><div><b>9</b><span>regions</span></div><div><b>22</b><span>job families</span></div></div>
+      </div>
+    </figure>
+    <figure class="scene" data-scene="1" style="margin:0">
+      <span class="cap">What the pool is made of</span><h3>Engineers, leaders and data</h3>
+      <div class="sub">Share of all profiles, by broad category</div>
+      <div class="body"><div class="stack" id="stack"></div><div class="legend" id="stacklegend"></div></div>
+    </figure>
+    <figure class="scene" data-scene="2" style="margin:0">
+      <span class="cap">By design, not chance</span><h3>Volumes follow digital readiness</h3>
+      <div class="sub">Profiles per country — set by quota from the National Readiness Index</div>
+      <div class="body"><div class="rows" id="crows"></div></div>
+    </figure>
+    <figure class="scene" data-scene="3" style="margin:0">
+      <span class="cap">So here's the rule</span><h3>We read the mix, not the count</h3>
+      <div class="body"><div class="mix">
+        <div class="mixrow"><b>A large sample (e.g. United States)</b><div class="mixbar" id="mixA"></div></div>
+        <div class="mixrow"><b>A small sample (e.g. Luxembourg)</b><div class="mixbar" id="mixB"></div></div>
+        <div class="mixnote">Different sizes — compared on the mix inside each place, never on raw headcount.</div>
+      </div></div>
+    </figure>
+  </div></div>
+  <div class="steps">
+    <div class="step" data-scene="0"><div class="n">01</div><h2>Nearly 200,000 careers</h2><p>We gathered <span class="hl">194,482</span> of the world's digital leaders, spread across 160 countries and 22 families of jobs.</p><p>Before asking where talent lives, it helps to know who is in the pool at all.</p></div>
+    <div class="step" data-scene="1"><div class="n">02</div><h2>What the pool is made of</h2><p>Two forces lead the pool: <span class="hl">engineering &amp; technology</span> (26%) and <span class="hl">leadership &amp; founders</span> (26%), with <span class="hl">data &amp; AI</span> close behind (16%) — three of the twenty-two job families we track in depth.</p><p>This is our baseline — the shape everything else is measured against.</p></div>
+    <div class="step" data-scene="2"><div class="n">03</div><h2>The volumes are deliberate</h2><p>We didn't collect people evenly — on purpose. Country and regional quotas were set from the <span class="hl">National Readiness Index</span>, which scores each country's digital readiness, so more digitally-ready countries contributed more profiles.</p><p>That means a country's headcount reflects our <span class="hl">quota design</span>, not the size of its talent — which is exactly why we can't compare countries by raw count.</p></div>
+    <div class="step" data-scene="3"><div class="n">04</div><h2>The rule for everything that follows</h2><p>So we never compare countries by size. Instead we look at the <span class="hl">mix of jobs inside each place</span> — what share of its profiles are engineers, founders, analysts.</p><p>A place with 30,000 profiles and one with 300 are judged the same way: on their mix.</p></div>
+  </div>
+</section>
+
+<section class="atlas">
+  <div class="dots"></div>
+  <div class="wrap">
+    <p class="eyebrow">Concentration</p>
+    <h2>The world, by what it's best at</h2>
+    <p class="lead">Every country is coloured by its world region. Hover or tap any country to see the three jobs it is most concentrated in, compared with the global average. This is share-inside-the-place, so big and small countries are read the same way.</p>
+    <div class="atlas-controls">
+      <div class="searchbox"><span class="si">⌕</span><input id="mapsearch" list="maplist" placeholder="Search for a country or region…" aria-label="Search for a country or region" autocomplete="off"></div>
+      <datalist id="maplist"></datalist>
+      <span class="maphint"><b>Interactive map</b> — click a country, filter by region, or search.</span>
+    </div>
+    <div class="reglegend" id="reglegend"></div>
+    <div class="atlas-grid map-block">
+      <div id="map" role="img" aria-label="World map coloured by region; hover a country for its top three job specialisations"></div>
+      <aside class="panel" id="panel">
+        <div class="ph">Hover, tap or search a country to see its top&nbsp;3 specialisations.</div>
+        <div class="pc" id="pc" hidden></div>
+        <div class="pr" id="pr" hidden></div>
+        <div class="pn" id="pn" hidden></div>
+        <div class="t3" id="t3"></div>
+      </aside>
+    </div>
+    <p class="substrip">Patterns across the map</p>
+    <div class="patterns" id="patterns"></div>
+    <p class="substrip">Specialty capitals — who over-indexes on what</p>
+    <div class="spotstrip" id="spotstrip"></div>
+  </div>
+</section>
+
+<section class="scrolly" id="s2">
+  <div class="graphic"><div class="stage"><div class="dots"></div>
+    <figure class="scene" data-scene="0" style="margin:0">
+      <span class="cap">Young talent · concentration</span><h3>Where young talent concentrates</h3>
+      <div class="sub">Share of each region that is early-career (1–3 yrs)</div>
+      <div class="body"><div class="rows" id="youthreg"></div></div>
+      <div class="foot">Dashed line = world average, 8.7%.</div>
+    </figure>
+    <figure class="scene" data-scene="1" style="margin:0">
+      <span class="cap">Young talent · what they do</span><h3>The young do the same few jobs</h3>
+      <div class="sub">Each region's early-career talent, by job family — spot how alike they are</div>
+      <div class="body"><div class="ybars" id="ybars"></div><div class="ylegend" id="ylegend"></div></div>
+    </figure>
+    <figure class="scene" data-scene="2" style="margin:0">
+      <span class="cap">The one constant</span><h3>Careers start in one language</h3>
+      <div class="sub">Most common entry-level titles — the same in every region</div>
+      <div class="body"><div class="titles" id="titlerows"></div></div>
+    </figure>
+  </div></div>
+  <div class="steps">
+    <div class="step" data-scene="0"><div class="n">05</div><h2>Where the young are</h2><p>Now, young talent — measured as a <span class="hl">share of each region</span>, never a raw count. It clusters heavily in a few places.</p><p><span class="hl">North Africa stands out</span>: 39% of its professionals are early-career, over 4× the world average. Asia and Sub-Saharan Africa also skew young; the West and Latin America are the most senior.</p></div>
+    <div class="step" data-scene="1"><div class="n">06</div><h2>They all do the same work</h2><p>Wherever the young are, they do the same handful of jobs. <span class="hl">Software engineering comes first everywhere</span> — a quarter to a half of each region's early-career talent — followed by data and AI.</p><p>The mix barely changes from one region to the next.</p></div>
+    <div class="step" data-scene="2"><div class="n">07</div><h2>One shared language</h2><p>Zoom from families to exact titles and it's starker still: <span class="hl">software engineer, data scientist, data &amp; AI engineer</span> top the young list in every region.</p><p>Careers begin in one language, and only branch into local specialisms as people climb.</p></div>
+  </div>
+</section>
+
+<footer class="outro">
+  <div class="ring a"></div>
+  <div class="wrap">
+    <p class="eyebrow">In conclusion</p>
+    <h2>What the map really says</h2>
+    <div class="concl">
+      <div class="cpoint"><b>Every region has a signature.</b> Western Europe leans to consulting and delivery, Asia to people and leadership roles, and the emerging regions — Africa, Latin America, Oceania — to data and analytics. It was never "US vs Europe": nine regions, nine specialisms.</div>
+      <div class="cpoint"><b>Some countries own a trade.</b> Hong Kong and Luxembourg corner finance (4–5× the world rate), Romania, Israel and Ukraine engineering, and Nigeria, Indonesia and Turkey founding and creative work — concentrations a raw headcount would never reveal.</div>
+      <div class="cpoint"><b>Young talent has its own map.</b> It concentrates in North Africa (4.5× the world rate), Asia and Sub-Saharan Africa, while the West and Latin America run senior — yet everywhere the young do the same work: software and data.</div>
+    </div>
+    <p class="closer">Read as concentrations, not counts, the atlas answers a better question — not where talent is, but what each place is for.</p>
+    <div class="brandlock"><div class="em">emerg<i>i</i>ng</div><small>Driving employability · Geurs 2026</small></div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script>
+const REGIONS={
+ 'Western Europe':'#0F1374','Asia':'#FF4901','North America':'#4B5BCB','Latin America':'#C99A46',
+ 'Middle East':'#860018','Eastern Europe':'#2E8F8A','Sub-Saharan Africa':'#C05699','North Africa':'#E0912A','Oceania':'#4E8A3C'};
+const REGTOP={
+ 'North Africa':[['Data & Analytics',1.83],['Software Eng.',1.81],['Data & AI',1.79]],
+ 'Sub-Saharan Africa':[['Data & Analytics',1.54],['Founder',1.17],['Software Eng.',1.13]],
+ 'Western Europe':[['Consulting',1.47],['Project & Deliv.',1.44],['Data & AI',1.24]],
+ 'Asia':[['HR & Talent',1.45],['Executive',1.37],['Students',1.26]],
+ 'Oceania':[['Data & Analytics',1.40],['Consulting',1.28],['Software Eng.',1.09]],
+ 'North America':[['Research',1.36],['Founder',1.35],['Software Eng.',1.31]],
+ 'Latin America':[['Data & Analytics',1.34],['General Mgmt',1.26],['Project & Deliv.',1.09]],
+ 'Middle East':[['Software Eng.',1.33],['Data & AI',1.28],['Data & Analytics',1.05]],
+ 'Eastern Europe':[['Software Eng.',1.33],['Product',1.18],['General Mgmt',1.00]]};
+const DATA={
+  supergroups:[{n:'Engineering & Technology',v:26.4,c:'#0F1374'},{n:'Leadership & Founders',v:26.1,c:'#4B5BCB'},{n:'Data & AI',v:16.3,c:'#DBB67D'},{n:'Business & Ops',v:15.8,c:'#FF9E79'},{n:'Other',v:15.4,c:'#B9BEDD'}],
+  countries:[['United States',29247],['India',18813],['Brazil',14181],['China',11937],['United Kingdom',6885],['Canada',5971],['France',5836],['Mexico',5452],['Germany',5358],['Israel',5037]],
+  mixA:[['#0F1374',40],['#4B5BCB',24],['#DBB67D',20],['#B9BEDD',16]],
+  mixB:[['#0F1374',30],['#4B5BCB',20],['#DBB67D',34],['#B9BEDD',16]],
+  patterns:[
+    {b:"Europe's delivery belt",t:'Italy, Belgium, Austria and Denmark all run 2–3× on project delivery and consulting — a band of managed-services economies.',c:'#4B5BCB'},
+    {b:'Emerging markets build and create',t:'Nigeria, Indonesia, Turkey and Pakistan lead on founders, design and marketing — the entrepreneurial, creative end.',c:'#FF4901'},
+    {b:'Asia tilts senior',t:'South Korea, Japan, Hong Kong and China over-index on executive, research and management roles — established, not early-career.',c:'#DBB67D'}
+  ],
+  spots:[
+    {g:'Finance capitals',items:[{c:'Hong Kong',x:'4.9×',hot:1},{c:'Luxembourg',x:'3.9×'},{c:'Saudi Arabia',x:'2.3×'}]},
+    {g:'Engineering strongholds',items:[{c:'Romania',x:'2.9×',hot:1},{c:'Israel',x:'2.3×'},{c:'Ukraine',x:'2.3×'}]},
+    {g:'Founder density',items:[{c:'Nigeria',x:'2.0×',hot:1},{c:'Indonesia',x:'1.9×'},{c:'Turkey',x:'1.7×'}]},
+    {g:'Data & analytics hubs',items:[{c:'Greece',x:'3.3×',hot:1},{c:'Morocco',x:'2.4×'},{c:'Kenya',x:'2.2×'}]},
+    {g:'AI & machine-learning lean',items:[{c:'Greece',x:'2.5×',hot:1},{c:'Turkey',x:'2.0×'},{c:'Egypt',x:'1.9×'}]},
+    {g:'Design & creative capitals',items:[{c:'Nigeria',x:'2.7×',hot:1},{c:'Indonesia',x:'2.5×'},{c:'Portugal',x:'1.8×'}]},
+    {g:'Marketing & comms',items:[{c:'Indonesia',x:'2.9×',hot:1},{c:'Pakistan',x:'2.0×'},{c:'Nigeria',x:'1.6×'}]},
+    {g:'C-suite / executive density',items:[{c:'South Korea',x:'2.6×',hot:1},{c:'Luxembourg',x:'2.5×'},{c:'Hong Kong',x:'2.4×'}]},
+    {g:'Research & academia',items:[{c:'South Korea',x:'2.6×',hot:1},{c:'Japan',x:'1.7×'},{c:'Switzerland',x:'1.6×'}]},
+    {g:'Cybersecurity hubs',items:[{c:'Saudi Arabia',x:'2.9×',hot:1},{c:'Argentina',x:'2.2×'},{c:'Australia',x:'1.4×'}]},
+    {g:'Product management',items:[{c:'Nigeria',x:'1.8×',hot:1},{c:'Czechia',x:'1.6×'},{c:'Israel',x:'1.5×'}]},
+    {g:'Talent pipelines (students)',items:[{c:'Germany',x:'3.4×',hot:1},{c:'India',x:'1.6×'},{c:'United Kingdom',x:'1.2×'}]}
+  ],
+  youthreg:[['North Africa',39.1,1],['Asia',14.3,0],['Sub-Saharan Africa',12.0,0],['Middle East',10.9,0],['North America',7.0,0],['Eastern Europe',6.0,0],['Western Europe',5.2,0],['Oceania',4.8,0],['Latin America',2.9,0]],
+  youngjobs:[['North Africa',47,19,19],['Asia',51,12,8],['Sub-Saharan Africa',36,21,10],['Middle East',40,17,17],['North America',47,7,9],['Eastern Europe',54,10,12],['Western Europe',25,14,23],['Oceania',35,18,17],['Latin America',43,17,12]],
+  titles:[['1','Software engineer'],['2','Data scientist'],['3','Data / AI engineer'],['4','Software developer']]
+};
+const AX=42, pct=v=>(v/AX*100).toFixed(1)+'%';
+
+const stack=document.getElementById('stack'),sl=document.getElementById('stacklegend');
+DATA.supergroups.forEach(s=>{const e=document.createElement('span');e.style.setProperty('--g',s.v);e.style.background=s.c;stack.appendChild(e);const li=document.createElement('span');li.innerHTML='<i style="background:'+s.c+'"></i>'+s.n+' <b>'+s.v+'%</b>';sl.appendChild(li);});
+const cr=document.getElementById('crows'),cmax=DATA.countries[0][1];
+DATA.countries.forEach((d,i)=>{const row=document.createElement('div');row.className='row';row.innerHTML='<div class="lab">'+d[0]+'</div><div class="track"><div class="fill" style="--w:'+(d[1]/cmax*100).toFixed(1)+'%;background:'+(i===0?'var(--navy)':'var(--peri)')+'"></div></div><div class="val">'+(d[1]/1000).toFixed(1)+'k</div>';cr.appendChild(row);});
+function fillMix(id,arr){const el=document.getElementById(id);arr.forEach(a=>{const s=document.createElement('span');s.style.background=a[0];s.style.width=a[1]+'%';el.appendChild(s);});}
+fillMix('mixA',DATA.mixA);fillMix('mixB',DATA.mixB);
+const YAX=42, ybase=(8.7/YAX*100).toFixed(1);
+const yr=document.getElementById('youthreg');
+DATA.youthreg.forEach(d=>{const row=document.createElement('div');row.className='row';row.innerHTML='<div class="lab">'+d[0]+'</div><div class="track"><div class="baseline" style="left:'+ybase+'%"></div><div class="fill" style="--w:'+(d[1]/YAX*100).toFixed(1)+'%;background:'+(d[2]?'var(--spark)':'var(--gold)')+'"></div></div><div class="val">'+d[1].toFixed(0)+'%</div>';yr.appendChild(row);});
+const yb=document.getElementById('ybars');
+DATA.youngjobs.forEach(d=>{const swe=d[1],da=d[2],dai=d[3],oth=Math.max(0,100-swe-da-dai);
+  const row=document.createElement('div');row.className='ybarrow';
+  row.innerHTML='<div class="ylab">'+d[0]+'</div><div class="ybar">'+
+    '<span class="seg swe" style="--w:'+swe+'%">'+swe+'%</span>'+
+    '<span class="seg da" style="--w:'+da+'%"></span>'+
+    '<span class="seg dai" style="--w:'+dai+'%"></span>'+
+    '<span class="seg oth" style="--w:'+oth+'%"></span></div>';
+  yb.appendChild(row);});
+document.getElementById('ylegend').innerHTML=[['#0F1374','Software engineering'],['#DBB67D','Data & analytics'],['#4B5BCB','Data & AI'],['#CDD0E6','Everything else']].map(l=>'<span><i style="background:'+l[0]+'"></i>'+l[1]+'</span>').join('');
+const tr=document.getElementById('titlerows');
+DATA.titles.forEach(t=>{const row=document.createElement('div');row.className='titlerow';row.innerHTML='<span class="r">'+t[0]+'</span><span class="t">'+t[1]+'</span><span class="g">every region</span>';tr.appendChild(row);});
+const pat=document.getElementById('patterns');
+DATA.patterns.forEach(p=>{const el=document.createElement('div');el.className='pat';el.style.borderTopColor=p.c;el.innerHTML='<b>'+p.b+'</b><span>'+p.t+'</span>';pat.appendChild(el);});
+const ss=document.getElementById('spotstrip');
+DATA.spots.forEach(g=>{const c=document.createElement('div');c.className='spotcard';let h='<b>'+g.g+'</b><div class="pills">';g.items.forEach(it=>{h+='<span class="pill'+(it.hot?' hot':'')+'"><span class="c">'+it.c+'</span><span class="x">'+it.x+'</span></span>';});c.innerHTML=h+'</div>';ss.appendChild(c);});
+
+function makeObserver(scrolly){const scenes=[...scrolly.querySelectorAll('.scene')];
+  function activate(i){scenes.forEach(s=>s.classList.toggle('active',+s.dataset.scene===i));}
+  activate(0);
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)activate(+e.target.dataset.scene);});},{rootMargin:'-45% 0px -45% 0px',threshold:0});
+  scrolly.querySelectorAll('.step').forEach(s=>io.observe(s));}
+document.querySelectorAll('.scrolly').forEach(makeObserver);
+
+const rl=document.getElementById('reglegend'),ORD=['North Africa','Sub-Saharan Africa','Western Europe','Asia','Oceania','North America','Latin America','Middle East','Eastern Europe'];
+const panel={ph:document.querySelector('#panel .ph'),pc:document.getElementById('pc'),pr:document.getElementById('pr'),pn:document.getElementById('pn'),t3:document.getElementById('t3')};
+let CMAP={},paths,activeRegion=null,selectedId=null,nameIndex={},regionIndex={};
+
+function gloss(lq){return lq>=1?'+'+Math.round((lq-1)*100)+'%':'−'+Math.round((1-lq)*100)+'%';}
+function renderTop(name,region,n,top){panel.ph.hidden=true;panel.pc.hidden=false;panel.pr.hidden=false;panel.pn.hidden=(!n);
+  panel.pc.textContent=name;panel.pr.innerHTML='<i style="background:'+(REGIONS[region]||'#ccc')+'"></i>'+region;panel.pn.textContent=n?(n.toLocaleString()+' profiles'):'';
+  const mx=Math.max(...top.map(t=>t[1]),1.9);
+  panel.t3.innerHTML=top.map(t=>'<div class="t3row"><div class="tf"><span>'+t[0]+'</span><span><b>'+t[1].toFixed(2)+'×</b><span class="pg">'+gloss(t[1])+'</span></span></div><div class="t3bar"><i style="width:'+Math.min(100,(t[1]/mx*100)).toFixed(0)+'%"></i></div></div>').join('');}
+function showRegion(r){renderTop(r+' — region',r,null,REGTOP[r]);}
+function clearPanel(){panel.ph.hidden=false;panel.pc.hidden=true;panel.pr.hidden=true;panel.pn.hidden=true;panel.t3.innerHTML='';}
+function restorePanel(){if(selectedId&&CMAP[selectedId]){const c=CMAP[selectedId];renderTop(c.name,c.region,c.n,c.top);}else if(activeRegion)showRegion(activeRegion);else clearPanel();}
+function applyMap(){if(!paths)return;paths.attr('class',d=>{let cls='geo';if(selectedId){cls+=(d.id===selectedId?' hi':' dim');}else if(activeRegion){const c=CMAP[d.id];if(!c||c.region!==activeRegion)cls+=' dim';}return cls;});
+  rl.querySelectorAll('.rl').forEach(e=>e.classList.toggle('off',activeRegion&&e.dataset.r!==activeRegion));}
+
+ORD.forEach(r=>{regionIndex[r.toLowerCase()]=r;const el=document.createElement('div');el.className='rl';el.dataset.r=r;el.innerHTML='<i style="background:'+REGIONS[r]+'"></i>'+r;
+  el.onclick=()=>{activeRegion=activeRegion===r?null:r;selectedId=null;const s=document.getElementById('mapsearch');if(s)s.value='';applyMap();restorePanel();};rl.appendChild(el);});
+
+const search=document.getElementById('mapsearch'),dl=document.getElementById('maplist');
+search.addEventListener('input',()=>{const v=search.value.trim().toLowerCase();
+  if(!v){activeRegion=null;selectedId=null;applyMap();clearPanel();return;}
+  if(regionIndex[v]){activeRegion=regionIndex[v];selectedId=null;applyMap();showRegion(activeRegion);return;}
+  if(nameIndex[v]){selectedId=nameIndex[v];activeRegion=null;applyMap();const c=CMAP[selectedId];renderTop(c.name,c.region,c.n,c.top);}});
+
+Promise.all([d3.json('data/countries-110m.json'),d3.json('data/cmap.json')]).then(([world,cmap])=>{
+  CMAP=cmap;Object.keys(CMAP).forEach(id=>{nameIndex[CMAP[id].name.toLowerCase()]=id;});
+  dl.innerHTML=[...ORD,...Object.values(CMAP).map(c=>c.name).sort()].map(o=>'<option value="'+o+'"></option>').join('');
+  const feats=topojson.feature(world,world.objects.countries).features;
+  const W=900,H=470,proj=d3.geoNaturalEarth1().fitSize([W,H-20],{type:'FeatureCollection',features:feats}),path=d3.geoPath(proj);
+  const svg=d3.select('#map').append('svg').attr('viewBox','0 0 '+W+' '+H);
+  paths=svg.append('g').selectAll('path').data(feats).join('path').attr('d',path)
+    .attr('fill',d=>{const c=CMAP[d.id];return c?REGIONS[c.region]:'#DFE1EC';})
+    .attr('class','geo')
+    .on('mouseenter',function(e,d){const c=CMAP[d.id];d3.select(this).classed('hi',true);if(c)renderTop(c.name,c.region,c.n,c.top);})
+    .on('mouseleave',function(e,d){d3.select(this).classed('hi',d.id===selectedId);restorePanel();})
+    .on('click',function(e,d){const c=CMAP[d.id];if(!c)return;selectedId=d.id;activeRegion=null;const s=document.getElementById('mapsearch');if(s)s.value=c.name;applyMap();renderTop(c.name,c.region,c.n,c.top);});
+}).catch(()=>{document.getElementById('map').innerHTML='<p style="color:var(--mute);font-size:.9rem">Map data could not load in this view.</p>';});
+</script>

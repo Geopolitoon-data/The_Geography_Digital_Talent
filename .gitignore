@@ -1,0 +1,15 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*~
+
+# Logs / temp
+*.log
+.cache/
+node_modules/
+
+# Local preview helpers
+*.pdf
+_qa*
