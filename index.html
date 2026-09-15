@@ -81,10 +81,15 @@ a{color:var(--navy)}
 .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:7px}
 .legend b{font-weight:700;margin-left:5px;color:var(--navy);font-variant-numeric:tabular-nums}
 
-.mix{display:flex;flex-direction:column;gap:18px;margin:auto 0}
-.mixrow>b{font-size:.8rem;color:var(--ink);font-weight:600;display:block;margin-bottom:7px}
-.mixbar{display:flex;height:34px;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
-.mixnote{font-size:.9rem;color:var(--navy);font-weight:600;text-align:center;margin-top:6px}
+.lqdemo{display:flex;flex-direction:column;gap:20px;margin:auto 0}
+.lqrow{display:grid;grid-template-columns:110px 1fr 54px;align-items:center;gap:14px}
+.lqrow .lqlab{font-size:.95rem;font-weight:700;color:var(--ink);text-align:right}
+.lqtrack{height:30px;border-radius:6px;background:#EDEEF6;position:relative;overflow:hidden}
+.lqtrack .lqfill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:6px;transition:width 1s cubic-bezier(.2,.7,.2,1)}
+.active .lqtrack .lqfill{width:var(--w)}
+.lqrow .lqval{font-size:1rem;font-weight:800;color:var(--navy);font-variant-numeric:tabular-nums;text-align:right}
+.lqcallout{text-align:center;font-size:1.02rem;color:var(--ink);margin-top:6px}
+.lqcallout b{color:var(--spark);font-weight:800;font-size:1.15rem}
 .ybars{display:flex;flex-direction:column;gap:8px}
 .ybarrow{display:grid;grid-template-columns:118px 1fr;align-items:center;gap:12px}
 .ybarrow .ylab{font-size:.8rem;font-weight:600;color:var(--ink);text-align:right;line-height:1.1}
@@ -185,6 +190,8 @@ a{color:var(--navy)}
 .concl{max-width:800px;margin:2rem auto 0;display:flex;flex-direction:column;gap:16px;text-align:left}
 .cpoint{font-size:1.02rem;color:#D7DAF5;line-height:1.55}
 .cpoint b{color:var(--gold);font-weight:800}
+.concl p{font-size:1.1rem;color:#E4E6F7;line-height:1.75;margin:0 0 1.1rem}
+.concl p:last-child{margin-bottom:0}
 .closer{max-width:660px;margin:2rem auto 0;color:#fff;font-size:1.14rem;font-weight:600}
 .brandlock{margin-top:3rem;display:flex;flex-direction:column;align-items:center;gap:.35rem}
 .brandlock .em{font-size:1.7rem;font-weight:800;letter-spacing:-.01em;color:#fff}
@@ -241,24 +248,15 @@ a{color:var(--navy)}
       <div class="body"><div class="stack" id="stack"></div><div class="legend" id="stacklegend"></div></div>
     </figure>
     <figure class="scene" data-scene="2" style="margin:0">
-      <span class="cap">By design, not chance</span><h3>Volumes follow digital readiness</h3>
-      <div class="sub">Profiles per country - set by quota from the National Readiness Index</div>
-      <div class="body"><div class="rows" id="crows"></div></div>
-    </figure>
-    <figure class="scene" data-scene="3" style="margin:0">
-      <span class="cap">So here's the rule</span><h3>We read the mix, not the count</h3>
-      <div class="body"><div class="mix">
-        <div class="mixrow"><b>A large sample (e.g. United States)</b><div class="mixbar" id="mixA"></div></div>
-        <div class="mixrow"><b>A small sample (e.g. Luxembourg)</b><div class="mixbar" id="mixB"></div></div>
-        <div class="mixnote">Different sizes - compared on the mix inside each place, never on raw headcount.</div>
-      </div></div>
+      <span class="cap">The lens</span><h3>What is each place unusually good at?</h3>
+      <div class="sub">The share of a place's talent in a job, next to the world's share</div>
+      <div class="body"><div class="lqdemo" id="lqdemo"></div></div>
     </figure>
   </div></div>
   <div class="steps">
-    <div class="step" data-scene="0"><div class="n">01</div><h2>Nearly 200,000 careers</h2><p>We scraped <span class="hl">213,732</span> career profiles. Of those, <span class="hl">194,482</span> had a current job on file - the working professionals this map is about, spread across 160 countries.</p><p>Before asking where talent lives, it helps to know who is in the pool at all.</p></div>
+    <div class="step" data-scene="0"><div class="n">01</div><h2>It begins with a number</h2><p>Every map of "digital talent" starts with one. Ours is <span class="hl">194,482</span> working professionals - drawn from 213,732 profiles, reaching into 160 countries.</p><p>But a headcount is the dullest thing about them. What matters is what they <span class="hl">do</span> - and where each kind of talent gathers.</p></div>
     <div class="step" data-scene="1"><div class="n">02</div><h2>What the pool is made of</h2><p>Two forces lead the pool: <span class="hl">engineering &amp; technology</span> (26%) and <span class="hl">leadership &amp; founders</span> (26%), with <span class="hl">data &amp; AI</span> close behind (16%) - three of the twenty-two job families we track in depth.</p><p>This is our baseline - the shape everything else is measured against.</p></div>
-    <div class="step" data-scene="2"><div class="n">03</div><h2>The volumes are deliberate</h2><p>We didn't collect people evenly - on purpose. Country and regional quotas were set from the <span class="hl">National Readiness Index</span>, which scores each country's digital readiness, so more digitally-ready countries contributed more profiles.</p><p>That means a country's headcount reflects our <span class="hl">quota design</span>, not the size of its talent - which is exactly why we can't compare countries by raw count.</p></div>
-    <div class="step" data-scene="3"><div class="n">04</div><h2>The rule for everything that follows</h2><p>So we never compare countries by size. Instead we look at the <span class="hl">mix of jobs inside each place</span> - what share of its profiles are engineers, founders, analysts.</p><p>A place with 30,000 profiles and one with 300 are judged the same way: on their mix.</p></div>
+    <div class="step" data-scene="2"><div class="n">03</div><h2>The one question we ask</h2><p>Not "where are the most people" - but "<span class="hl">what is each place unusually good at?</span>" For every country we take the slice of its talent in a job and hold it up against the world's slice.</p><p>Finance is about 3% of talent worldwide. In Hong Kong it's closer to 14% - <span class="hl">five times</span> the concentration. That gap is a signature, and it's what the rest of this story is built on.</p></div>
   </div>
 </section>
 
@@ -267,7 +265,7 @@ a{color:var(--navy)}
   <div class="wrap">
     <p class="eyebrow">Concentration</p>
     <h2>The world, by what it's best at</h2>
-    <p class="lead">Every country is coloured by its world region. Hover or tap any country to see the three jobs it is most concentrated in, compared with the global average. This is share-inside-the-place, so big and small countries are read the same way.</p>
+    <p class="lead">Every country is coloured by its world region. Hover or tap any country to see the three <b>job functions</b> it is most concentrated in - what its digital workforce actually <i>does</i> - versus the global average. This is share-inside-the-place, so big and small countries are read the same way. Seniority and founder density are a separate question, shown lower down.</p>
     <div class="atlas-controls">
       <div class="searchbox"><span class="si">⌕</span><input id="mapsearch" list="maplist" placeholder="Search for a country or region…" aria-label="Search for a country or region" autocomplete="off"></div>
       <datalist id="maplist"></datalist>
@@ -286,8 +284,10 @@ a{color:var(--navy)}
     </div>
     <p class="substrip">Patterns across the map</p>
     <div class="patterns" id="patterns"></div>
-    <p class="substrip">Specialty capitals - who over-indexes on what</p>
-    <div class="spotstrip" id="spotstrip"></div>
+    <p class="substrip">What people do - functions each place over-indexes on</p>
+    <div class="spotstrip" id="spotfunc"></div>
+    <p class="substrip" style="margin-top:30px">How senior they are - role &amp; career stage (a different lens)</p>
+    <div class="spotstrip" id="spotrole"></div>
   </div>
 </section>
 
@@ -311,23 +311,23 @@ a{color:var(--navy)}
     </figure>
   </div></div>
   <div class="steps">
-    <div class="step" data-scene="0"><div class="n">05</div><h2>Where the young are</h2><p>Now, young talent - measured as a <span class="hl">share of each region</span>, never a raw count. It clusters heavily in a few places.</p><p><span class="hl">North Africa stands out</span>: 39% of its professionals are early-career, over 4× the world average. Asia and Sub-Saharan Africa also skew young; the West and Latin America are the most senior.</p></div>
-    <div class="step" data-scene="1"><div class="n">06</div><h2>They all do the same work</h2><p>Wherever the young are, they do the same handful of jobs. <span class="hl">Software engineering comes first everywhere</span> - a quarter to a half of each region's early-career talent - followed by data and AI.</p><p>The mix barely changes from one region to the next.</p></div>
-    <div class="step" data-scene="2"><div class="n">07</div><h2>One shared language</h2><p>Zoom from families to exact titles and it's starker still: <span class="hl">software engineer, data scientist, data &amp; AI engineer</span> top the young list in every region.</p><p>Careers begin in one language, and only branch into local specialisms as people climb.</p></div>
+    <div class="step" data-scene="0"><div class="n">04</div><h2>Where the young are</h2><p>Now, young talent - measured as a <span class="hl">share of each region</span>, never a raw count. It clusters heavily in a few places.</p><p><span class="hl">North Africa stands out</span>: 39% of its professionals are early-career, over 4× the world average. Asia and Sub-Saharan Africa also skew young; the West and Latin America are the most senior.</p></div>
+    <div class="step" data-scene="1"><div class="n">05</div><h2>They all do the same work</h2><p>Wherever the young are, they do the same handful of jobs. <span class="hl">Software engineering comes first everywhere</span> - a quarter to a half of each region's early-career talent - followed by data and AI.</p><p>The mix barely changes from one region to the next.</p></div>
+    <div class="step" data-scene="2"><div class="n">06</div><h2>One shared language</h2><p>Zoom from families to exact titles and it's starker still: <span class="hl">software engineer, data scientist, data &amp; AI engineer</span> top the young list in every region.</p><p>Careers begin in one language, and only branch into local specialisms as people climb.</p></div>
   </div>
 </section>
 
 <footer class="outro">
   <div class="ring a"></div>
   <div class="wrap">
-    <p class="eyebrow">In conclusion</p>
-    <h2>What the map really says</h2>
+    <p class="eyebrow">In closing</p>
+    <h2>There isn't one map of talent. There are many.</h2>
     <div class="concl">
-      <div class="cpoint"><b>Every region has a signature.</b> Western Europe leans to consulting and delivery, Asia to people and leadership roles, and the emerging regions - Africa, Latin America, Oceania - to data and analytics. It was never "US vs Europe": nine regions, nine specialisms.</div>
-      <div class="cpoint"><b>Some countries own a trade.</b> Hong Kong and Luxembourg corner finance (4-5× the world rate), Romania, Israel and Ukraine engineering, and Nigeria, Indonesia and Turkey founding and creative work - concentrations a raw headcount would never reveal.</div>
-      <div class="cpoint"><b>Young talent has its own map.</b> It concentrates in North Africa (4.5× the world rate), Asia and Sub-Saharan Africa, while the West and Latin America run senior - yet everywhere the young do the same work: software and data.</div>
+      <p>Look long enough and the flat idea of "digital talent" dissolves into something richer. Western Europe advises and consults; Asia leads, manages and hires; and across Africa, Latin America and the Gulf, a younger world leans into data and into building things from scratch. No country is the centre - each is simply the most itself.</p>
+      <p>Zoom in and those leanings sharpen into signatures. Finance pools in Hong Kong and Luxembourg. Engineering runs deep in Romania, Israel and Ukraine. And founders gather where you would least expect them - Lagos, Jakarta, Istanbul.</p>
+      <p>The youngest talent writes the clearest line of all. It gathers most densely in North Africa and Asia, and wherever it lands it speaks the same first language - software, then data - before picking up the accent of its region.</p>
     </div>
-    <p class="closer">Read as concentrations, not counts, the atlas answers a better question - not where talent is, but what each place is for.</p>
+    <p class="closer">None of it comes from counting heads. It comes from asking a better question of every place on the map: not how many, but what are you for.</p>
     <div class="brandlock"><div class="em">emerg<i>i</i>ng</div><small>Driving employability · Geurs 2026</small></div>
   </div>
 </footer>
@@ -350,9 +350,7 @@ const REGTOP={
  'Eastern Europe':[['Software Eng.',1.33],['Product',1.18],['General Mgmt',1.00]]};
 const DATA={
   supergroups:[{n:'Engineering & Technology',v:26.4,c:'#0F1374'},{n:'Leadership & Founders',v:26.1,c:'#4B5BCB'},{n:'Data & AI',v:16.3,c:'#DBB67D'},{n:'Business & Ops',v:15.8,c:'#FF9E79'},{n:'Other',v:15.4,c:'#B9BEDD'}],
-  countries:[['United States',29247],['India',18813],['Brazil',14181],['China',11937],['United Kingdom',6885],['Canada',5971],['France',5836],['Mexico',5452],['Germany',5358],['Israel',5037]],
-  mixA:[['#0F1374',40],['#4B5BCB',24],['#DBB67D',20],['#B9BEDD',16]],
-  mixB:[['#0F1374',30],['#4B5BCB',20],['#DBB67D',34],['#B9BEDD',16]],
+  lqdemo:[{lab:'Worldwide',pctf:3,note:'≈ 3% in finance'},{lab:'Hong Kong',pctf:14,note:'≈ 14% in finance',hot:1}],
   patterns:[
     {b:"Europe's delivery belt",t:'Italy, Belgium, Austria and Denmark all run 2-3× on project delivery and consulting - a band of managed-services economies.',c:'#4B5BCB'},
     {b:'Emerging markets build and create',t:'Nigeria, Indonesia, Turkey and Pakistan lead on founders, design and marketing - the entrepreneurial, creative end.',c:'#FF4901'},
@@ -380,10 +378,11 @@ const AX=42, pct=v=>(v/AX*100).toFixed(1)+'%';
 
 const stack=document.getElementById('stack'),sl=document.getElementById('stacklegend');
 DATA.supergroups.forEach(s=>{const e=document.createElement('span');e.style.setProperty('--g',s.v);e.style.background=s.c;stack.appendChild(e);const li=document.createElement('span');li.innerHTML='<i style="background:'+s.c+'"></i>'+s.n+' <b>'+s.v+'%</b>';sl.appendChild(li);});
-const cr=document.getElementById('crows'),cmax=DATA.countries[0][1];
-DATA.countries.forEach((d,i)=>{const row=document.createElement('div');row.className='row';row.innerHTML='<div class="lab">'+d[0]+'</div><div class="track"><div class="fill" style="--w:'+(d[1]/cmax*100).toFixed(1)+'%;background:'+(i===0?'var(--navy)':'var(--peri)')+'"></div></div><div class="val">'+(d[1]/1000).toFixed(1)+'k</div>';cr.appendChild(row);});
-function fillMix(id,arr){const el=document.getElementById(id);arr.forEach(a=>{const s=document.createElement('span');s.style.background=a[0];s.style.width=a[1]+'%';el.appendChild(s);});}
-fillMix('mixA',DATA.mixA);fillMix('mixB',DATA.mixB);
+const lq=document.getElementById('lqdemo');
+DATA.lqdemo.forEach(d=>{const row=document.createElement('div');row.className='lqrow';
+  row.innerHTML='<div class="lqlab">'+d.lab+'</div><div class="lqtrack"><div class="lqfill" style="--w:'+(d.pctf/16*100).toFixed(0)+'%;background:'+(d.hot?'var(--spark)':'var(--peri)')+'"></div></div><div class="lqval">'+d.pctf+'%</div>';
+  lq.appendChild(row);});
+const cx=document.createElement('div');cx.className='lqcallout';cx.innerHTML='Finance is about <b>5×</b> more concentrated in Hong Kong than in the world.';lq.appendChild(cx);
 const YAX=42, ybase=(8.7/YAX*100).toFixed(1);
 const yr=document.getElementById('youthreg');
 DATA.youthreg.forEach(d=>{const row=document.createElement('div');row.className='row';row.innerHTML='<div class="lab">'+d[0]+'</div><div class="track"><div class="baseline" style="left:'+ybase+'%"></div><div class="fill" style="--w:'+(d[1]/YAX*100).toFixed(1)+'%;background:'+(d[2]?'var(--spark)':'var(--gold)')+'"></div></div><div class="val">'+d[1].toFixed(0)+'%</div>';yr.appendChild(row);});
@@ -401,8 +400,12 @@ const tr=document.getElementById('titlerows');
 DATA.titles.forEach(t=>{const row=document.createElement('div');row.className='titlerow';row.innerHTML='<span class="r">'+t[0]+'</span><span class="t">'+t[1]+'</span><span class="g">every region</span>';tr.appendChild(row);});
 const pat=document.getElementById('patterns');
 DATA.patterns.forEach(p=>{const el=document.createElement('div');el.className='pat';el.style.borderTopColor=p.c;el.innerHTML='<b>'+p.b+'</b><span>'+p.t+'</span>';pat.appendChild(el);});
-const ss=document.getElementById('spotstrip');
-DATA.spots.forEach(g=>{const c=document.createElement('div');c.className='spotcard';let h='<b>'+g.g+'</b><div class="pills">';g.items.forEach(it=>{h+='<span class="pill'+(it.hot?' hot':'')+'"><span class="c">'+it.c+'</span><span class="x">'+it.x+'</span></span>';});c.innerHTML=h+'</div>';ss.appendChild(c);});
+const ROLE={'Founder density':'Founders','C-suite / executive density':'Executives / C-suite','Talent pipelines (students)':'Early-career pipelines'};
+const elFunc=document.getElementById('spotfunc'),elRole=document.getElementById('spotrole');
+DATA.spots.forEach(g=>{const isRole=g.g in ROLE;const c=document.createElement('div');c.className='spotcard';
+  let h='<b>'+(isRole?ROLE[g.g]:g.g)+'</b><div class="pills">';
+  g.items.forEach(it=>{h+='<span class="pill'+(it.hot?' hot':'')+'"><span class="c">'+it.c+'</span><span class="x">'+it.x+'</span></span>';});
+  c.innerHTML=h+'</div>';(isRole?elRole:elFunc).appendChild(c);});
 
 function makeObserver(scrolly){const scenes=[...scrolly.querySelectorAll('.scene')];
   function activate(i){scenes.forEach(s=>s.classList.toggle('active',+s.dataset.scene===i));}
@@ -416,8 +419,8 @@ const panel={ph:document.querySelector('#panel .ph'),pc:document.getElementById(
 let CMAP={},paths,activeRegion=null,selectedId=null,nameIndex={},regionIndex={};
 
 function gloss(lq){return lq>=1?'+'+Math.round((lq-1)*100)+'%':'−'+Math.round((1-lq)*100)+'%';}
-function renderTop(name,region,n,top){panel.ph.hidden=true;panel.pc.hidden=false;panel.pr.hidden=false;panel.pn.hidden=(!n);
-  panel.pc.textContent=name;panel.pr.innerHTML='<i style="background:'+(REGIONS[region]||'#ccc')+'"></i>'+region;panel.pn.textContent=n?(n.toLocaleString()+' profiles'):'';
+function renderTop(name,region,n,top){panel.ph.hidden=true;panel.pc.hidden=false;panel.pr.hidden=false;panel.pn.hidden=true;
+  panel.pc.textContent=name;panel.pr.innerHTML='<i style="background:'+(REGIONS[region]||'#ccc')+'"></i>'+region;
   const mx=Math.max(...top.map(t=>t[1]),1.9);
   panel.t3.innerHTML=top.map(t=>'<div class="t3row"><div class="tf"><span>'+t[0]+'</span><span><b>'+t[1].toFixed(2)+'×</b><span class="pg">'+gloss(t[1])+'</span></span></div><div class="t3bar"><i style="width:'+Math.min(100,(t[1]/mx*100)).toFixed(0)+'%"></i></div></div>').join('');}
 function showRegion(r){renderTop(r+' - region',r,null,REGTOP[r]);}
