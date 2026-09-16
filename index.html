@@ -289,10 +289,8 @@ a{color:var(--navy)}
     </div>
     <p class="substrip">Patterns across the map</p>
     <div class="patterns" id="patterns"></div>
-    <p class="substrip">What people do - functions each place over-indexes on</p>
+    <p class="substrip">What people do - every function, what it means, and where it concentrates</p>
     <div class="spotstrip" id="spotfunc"></div>
-    <p class="substrip" style="margin-top:30px">What each function means - example job titles</p>
-    <div class="funcref" id="funcref"></div>
   </div>
 </section>
 
@@ -376,15 +374,22 @@ const DATA={
     {b:'Asia tilts senior',t:'South Korea, Japan, Hong Kong and China over-index on executive, research and management roles - established, not early-career.',c:'#DBB67D'}
   ],
   spots:[
-    {g:'Finance capitals',items:[{c:'Hong Kong',x:'4.9×',hot:1},{c:'Luxembourg',x:'3.9×'},{c:'Saudi Arabia',x:'2.3×'}]},
-    {g:'Engineering strongholds',items:[{c:'Romania',x:'2.9×',hot:1},{c:'Israel',x:'2.3×'},{c:'Ukraine',x:'2.3×'}]},
-    {g:'Data & analytics hubs',items:[{c:'Greece',x:'3.3×',hot:1},{c:'Morocco',x:'2.4×'},{c:'Kenya',x:'2.2×'}]},
-    {g:'AI & machine-learning lean',items:[{c:'Greece',x:'2.5×',hot:1},{c:'Turkey',x:'2.0×'},{c:'Egypt',x:'1.9×'}]},
-    {g:'Design & creative capitals',items:[{c:'Nigeria',x:'2.7×',hot:1},{c:'Indonesia',x:'2.5×'},{c:'Portugal',x:'1.8×'}]},
-    {g:'Marketing & comms',items:[{c:'Indonesia',x:'2.9×',hot:1},{c:'Pakistan',x:'2.0×'},{c:'Nigeria',x:'1.6×'}]},
-    {g:'Research & academia',items:[{c:'South Korea',x:'2.6×',hot:1},{c:'Japan',x:'1.7×'},{c:'Switzerland',x:'1.6×'}]},
-    {g:'Cybersecurity hubs',items:[{c:'Saudi Arabia',x:'2.9×',hot:1},{c:'Argentina',x:'2.2×'},{c:'Australia',x:'1.4×'}]},
-    {g:'Product management',items:[{c:'Nigeria',x:'1.8×',hot:1},{c:'Czechia',x:'1.6×'},{c:'Israel',x:'1.5×'}]}
+    {g:'Software eng.',sub:'software engineer, devops engineer, full-stack developer',items:[{c:'Romania',x:'2.9×',hot:1},{c:'Israel',x:'2.3×'},{c:'Ukraine',x:'2.2×'}]},
+    {g:'Data & AI',sub:'data scientist, machine learning engineer, AI engineer',items:[{c:'Greece',x:'2.5×',hot:1},{c:'Turkey',x:'2.0×'},{c:'Egypt',x:'1.9×'}]},
+    {g:'Data & analytics',sub:'data engineer, data analyst, analytics engineer',items:[{c:'Greece',x:'3.3×',hot:1},{c:'Morocco',x:'2.4×'},{c:'Kenya',x:'2.2×'}]},
+    {g:'Finance',sub:'CFO, quantitative analyst, investment-banking VP',items:[{c:'Hong Kong',x:'4.9×',hot:1},{c:'Luxembourg',x:'3.9×'},{c:'Saudi Arabia',x:'2.3×'}]},
+    {g:'Cybersecurity',sub:'CISO, cybersecurity engineer, security analyst',items:[{c:'Saudi Arabia',x:'2.9×',hot:1},{c:'Argentina',x:'2.2×'},{c:'Australia',x:'1.4×'}]},
+    {g:'Design',sub:'product designer, creative director, head of design',items:[{c:'Nigeria',x:'2.7×',hot:1},{c:'Indonesia',x:'2.5×'},{c:'Portugal',x:'1.8×'}]},
+    {g:'Marketing',sub:'head of marketing, marketing manager, content creator',items:[{c:'Indonesia',x:'2.9×',hot:1},{c:'Pakistan',x:'2.0×'},{c:'Nigeria',x:'1.6×'}]},
+    {g:'Product',sub:'product manager, head of product, product owner',items:[{c:'Nigeria',x:'1.8×',hot:1},{c:'Czechia',x:'1.6×'},{c:'Austria',x:'1.5×'}]},
+    {g:'Consulting',sub:'consultant, senior consultant, advisor',items:[{c:'France',x:'2.1×',hot:1},{c:'Belgium',x:'2.1×'},{c:'Luxembourg',x:'1.9×'}]},
+    {g:'Project delivery',sub:'project manager, program manager, technical program manager',items:[{c:'Italy',x:'3.1×',hot:1},{c:'Belgium',x:'3.0×'},{c:'Austria',x:'2.1×'}]},
+    {g:'Research',sub:'research assistant, applied scientist, researcher',items:[{c:'South Korea',x:'2.6×',hot:1},{c:'Japan',x:'1.7×'},{c:'Switzerland',x:'1.6×'}]},
+    {g:'Operations',sub:'head of operations, operations manager, COO',items:[{c:'Norway',x:'2.2×',hot:1},{c:'Finland',x:'1.9×'},{c:'Mexico',x:'1.8×'}]},
+    {g:'Sales & BD',sub:'business development manager, account executive, sales manager',items:[{c:'Finland',x:'1.6×',hot:1},{c:'Singapore',x:'1.6×'},{c:'Norway',x:'1.6×'}]},
+    {g:'HR & talent',sub:'CHRO, HR business partner, talent-acquisition specialist',items:[{c:'Japan',x:'1.9×',hot:1},{c:'Italy',x:'1.7×'},{c:'Germany',x:'1.6×'}]},
+    {g:'Legal',sub:'general counsel, legal counsel, compliance officer',items:[{c:'Saudi Arabia',x:'2.2×',hot:1},{c:'Japan',x:'1.7×'},{c:'Canada',x:'1.3×'}]},
+    {g:'Other eng.',sub:'founding engineer, enterprise architect, solutions architect',items:[{c:'Singapore',x:'1.4×',hot:1},{c:'Sweden',x:'1.4×'},{c:'Belgium',x:'1.3×'}]}
   ],
   seniority:[['Western Europe',[1,44,8,11,15,7,7,7]],['Asia',[1,43,9,12,12,12,5,5]],['Latin America',[0,44,12,13,14,6,7,5]],['Eastern Europe',[0,48,10,11,13,4,7,5]],['Oceania',[1,52,11,8,13,5,6,5]],['North America',[2,52,10,7,7,9,5,8]],['Middle East',[1,54,10,9,9,7,5,6]],['Sub-Saharan Africa',[1,59,7,9,9,2,6,7]],['North Africa',[1,77,8,5,3,1,2,3]]],
   sencards:[
@@ -399,24 +404,6 @@ const DATA={
   ],
   youthreg:[['North Africa',39.1,1],['Asia',14.3,0],['Sub-Saharan Africa',12.0,0],['Middle East',10.9,0],['North America',7.0,0],['Eastern Europe',6.0,0],['Western Europe',5.2,0],['Oceania',4.8,0],['Latin America',2.9,0]],
   youngjobs:[['North Africa',47,19,19],['Asia',51,12,8],['Sub-Saharan Africa',36,21,10],['Middle East',40,17,17],['North America',47,7,9],['Eastern Europe',54,10,12],['Western Europe',25,14,23],['Oceania',35,18,17],['Latin America',43,17,12]],
-  functitles:[
-    ['Software eng.','software engineer, devops engineer, full-stack developer, software developer'],
-    ['Data & AI','data scientist, machine learning engineer, AI engineer'],
-    ['Data & analytics','data engineer, data analyst, analytics engineer'],
-    ['Product','product manager, head of product, product owner'],
-    ['Design','product designer, creative director, head of design'],
-    ['Finance','CFO, quantitative analyst, investment-banking VP'],
-    ['Sales & BD','business development manager, account executive, sales manager'],
-    ['Marketing','head of marketing, marketing manager, content creator'],
-    ['Consulting','consultant, senior consultant, advisor'],
-    ['Research','research assistant, applied scientist, researcher'],
-    ['Cybersecurity','CISO, cybersecurity engineer, security analyst'],
-    ['Operations','head of operations, operations manager, COO'],
-    ['Project delivery','project manager, program manager, technical program manager'],
-    ['HR & talent','CHRO, HR business partner, talent-acquisition specialist'],
-    ['Legal','general counsel, legal counsel, compliance officer'],
-    ['Other eng.','founding engineer, enterprise architect, solutions architect']
-  ],
   titles:[['1','Software engineer'],['2','Data scientist'],['3','Data / AI engineer'],['4','Software developer']]
 };
 const AX=42, pct=v=>(v/AX*100).toFixed(1)+'%';
@@ -448,8 +435,6 @@ DATA.patterns.forEach(p=>{const el=document.createElement('div');el.className='p
 function renderCards(el,arr){arr.forEach(g=>{const c=document.createElement('div');c.className='spotcard';let h='<b>'+g.g+'</b>'+(g.sub?'<span class="cardsub">'+g.sub+'</span>':'')+'<div class="pills">';g.items.forEach(it=>{h+='<span class="pill'+(it.hot?' hot':'')+'"><span class="c">'+it.c+'</span><span class="x">'+it.x+'</span></span>';});c.innerHTML=h+'</div>';el.appendChild(c);});}
 renderCards(document.getElementById('spotfunc'),DATA.spots);
 renderCards(document.getElementById('sencards'),DATA.sencards);
-const fr=document.getElementById('funcref');
-DATA.functitles.forEach(t=>{const d=document.createElement('div');d.className='frow';d.innerHTML='<b>'+t[0]+'</b><span>'+t[1]+'</span>';fr.appendChild(d);});
 const SENCOL=[['#ECEDF7','Interns','#23264D'],['#D7DAEF','Specialists / ICs','#23264D'],['#BEC2E6','Seniors','#23264D'],['#969CDB','Managers','#23264D'],['#6B73C6','Directors & heads','#fff'],['#4B5BCB','VPs & partners','#fff'],['#262C82','C-level','#fff'],['#0F1374','Founders','#fff']];
 const sb=document.getElementById('senbars');
 DATA.seniority.forEach(d=>{const row=document.createElement('div');row.className='ybarrow';let segs='';
