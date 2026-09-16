@@ -181,6 +181,7 @@ a{color:var(--navy)}
 .spotstrip{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:16px}
 .spotcard{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
 .spotcard>b{font-size:.82rem;color:var(--navy);font-weight:700;display:block;margin-bottom:10px}
+.spotcard .cardsub{display:block;font-size:.71rem;color:var(--mute);font-weight:600;margin:-6px 0 11px}
 
 .outro{position:relative;overflow:hidden;padding:11vh 0 8vh;text-align:center;background:var(--navy)}
 .outro .ring.a{width:260px;height:260px;bottom:-120px;left:-60px;border-color:var(--peri);opacity:.3}
@@ -298,7 +299,7 @@ a{color:var(--navy)}
     <p class="substrip">The seniority ladder, region by region</p>
     <div class="ybars" id="senbars"></div>
     <div class="ylegend" id="senlegend"></div>
-    <p class="substrip" style="margin-top:30px">The two poles - who over-indexes on each end</p>
+    <p class="substrip" style="margin-top:30px">Every rung of the ladder - where each level concentrates</p>
     <div class="spotstrip" id="sencards"></div>
   </div>
 </section>
@@ -381,8 +382,14 @@ const DATA={
   ],
   seniority:[['Western Europe',[45,20,22,14]],['Asia',[45,21,24,10]],['Latin America',[45,24,20,11]],['Eastern Europe',[49,22,18,12]],['Oceania',[53,19,17,11]],['North America',[55,17,16,12]],['Middle East',[55,19,16,10]],['Sub-Saharan Africa',[60,16,11,13]],['North Africa',[78,13,4,5]]],
   sencards:[
-    {g:'Where leaders concentrate (founders & C-level)',items:[{c:'Bangladesh',x:'2.1×',hot:1},{c:'Norway',x:'1.8×'},{c:'South Korea',x:'1.7×'},{c:'Switzerland',x:'1.6×'}]},
-    {g:'Where the work is hands-on (specialists)',items:[{c:'Morocco',x:'1.8×',hot:1},{c:'Romania',x:'1.6×'},{c:'Egypt',x:'1.6×'},{c:'Greece',x:'1.5×'}]}
+    {g:'Founders',sub:'5.8% of the pool',items:[{c:'Bangladesh',x:'2.3×',hot:1},{c:'Turkey',x:'2.1×'},{c:'Nigeria',x:'1.9×'}]},
+    {g:'C-level executives',sub:'5.8% of the pool',items:[{c:'South Korea',x:'2.7×',hot:1},{c:'Norway',x:'2.7×'},{c:'Bangladesh',x:'1.9×'}]},
+    {g:'VPs & partners',sub:'8.1% of the pool',items:[{c:'Hong Kong',x:'3.8×',hot:1},{c:'Luxembourg',x:'3.6×'},{c:'Japan',x:'2.4×'}]},
+    {g:'Directors & heads',sub:'11.5% of the pool',items:[{c:'Norway',x:'2.1×',hot:1},{c:'Austria',x:'2.0×'},{c:'Hong Kong',x:'1.8×'}]},
+    {g:'Managers',sub:'10.3% of the pool',items:[{c:'Belgium',x:'1.9×',hot:1},{c:'Chile',x:'1.7×'},{c:'Italy',x:'1.6×'}]},
+    {g:'Senior specialists',sub:'9.6% of the pool',items:[{c:'Sri Lanka',x:'2.5×',hot:1},{c:'New Zealand',x:'1.7×'},{c:'Ukraine',x:'1.7×'}]},
+    {g:'Specialists / ICs',sub:'47.6% of the pool',items:[{c:'Morocco',x:'1.8×',hot:1},{c:'Jordan',x:'1.7×'},{c:'Romania',x:'1.6×'}]},
+    {g:'Interns & trainees',sub:'1.2% of the pool',items:[{c:'United States',x:'2.3×',hot:1},{c:'Pakistan',x:'2.1×'},{c:'Germany',x:'1.9×'}]}
   ],
   youthreg:[['North Africa',39.1,1],['Asia',14.3,0],['Sub-Saharan Africa',12.0,0],['Middle East',10.9,0],['North America',7.0,0],['Eastern Europe',6.0,0],['Western Europe',5.2,0],['Oceania',4.8,0],['Latin America',2.9,0]],
   youngjobs:[['North Africa',47,19,19],['Asia',51,12,8],['Sub-Saharan Africa',36,21,10],['Middle East',40,17,17],['North America',47,7,9],['Eastern Europe',54,10,12],['Western Europe',25,14,23],['Oceania',35,18,17],['Latin America',43,17,12]],
@@ -414,7 +421,7 @@ const tr=document.getElementById('titlerows');
 DATA.titles.forEach(t=>{const row=document.createElement('div');row.className='titlerow';row.innerHTML='<span class="r">'+t[0]+'</span><span class="t">'+t[1]+'</span><span class="g">every region</span>';tr.appendChild(row);});
 const pat=document.getElementById('patterns');
 DATA.patterns.forEach(p=>{const el=document.createElement('div');el.className='pat';el.style.borderTopColor=p.c;el.innerHTML='<b>'+p.b+'</b><span>'+p.t+'</span>';pat.appendChild(el);});
-function renderCards(el,arr){arr.forEach(g=>{const c=document.createElement('div');c.className='spotcard';let h='<b>'+g.g+'</b><div class="pills">';g.items.forEach(it=>{h+='<span class="pill'+(it.hot?' hot':'')+'"><span class="c">'+it.c+'</span><span class="x">'+it.x+'</span></span>';});c.innerHTML=h+'</div>';el.appendChild(c);});}
+function renderCards(el,arr){arr.forEach(g=>{const c=document.createElement('div');c.className='spotcard';let h='<b>'+g.g+'</b>'+(g.sub?'<span class="cardsub">'+g.sub+'</span>':'')+'<div class="pills">';g.items.forEach(it=>{h+='<span class="pill'+(it.hot?' hot':'')+'"><span class="c">'+it.c+'</span><span class="x">'+it.x+'</span></span>';});c.innerHTML=h+'</div>';el.appendChild(c);});}
 renderCards(document.getElementById('spotfunc'),DATA.spots);
 renderCards(document.getElementById('sencards'),DATA.sencards);
 const SENCOL=[['#CDD0E6','Hands-on / IC','#23264D'],['#4B5BCB','Managers','#fff'],['#DBB67D','Senior leaders','#23264D'],['#0F1374','Founders & C-level','#fff']];
