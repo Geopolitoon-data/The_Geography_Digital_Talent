@@ -305,7 +305,8 @@ a{color:var(--navy)}
     <div class="ylegend" id="senlegend"></div>
     <p class="substrip" style="margin-top:30px">Every rung of the ladder - where each level concentrates</p>
     <div class="spotstrip" id="sencards"></div>
-    <div class="pat" style="border-top-color:#4B5BCB;margin-top:30px;max-width:660px"><b>Asia tilts senior</b><span>South Korea leads on C-level, while Hong Kong and Japan carry the deepest VP and partner tiers - established leadership, not early-career talent.</span></div>
+    <p class="substrip" style="margin-top:30px">Patterns in the ladder</p>
+    <div class="patterns" id="senpatterns"></div>
   </div>
 </section>
 
@@ -374,6 +375,12 @@ const DATA={
     {b:'Emerging markets build and create',t:'Nigeria, Indonesia, Turkey and Pakistan lead on founders, design and marketing - the entrepreneurial, creative end.',c:'#FF4901'},
     {b:'Small territories corner finance',t:'Hong Kong (4.9×) and Luxembourg (3.9×) are the two most concentrated places on the whole map - both in finance - with Saudi Arabia and Japan close behind.',c:'#DBB67D'}
   ],
+  senpatterns:[
+    {b:'North Africa is all builders',t:'77% of its professionals are hands-on specialists, with the thinnest leadership layer on the map - almost no managers or executives.',c:'#0F1374'},
+    {b:'Founders cluster in emerging markets',t:'Bangladesh, Turkey and Nigeria over-index ~2× on founders - the entrepreneurial end sits well outside the mature economies.',c:'#FF4901'},
+    {b:'Finance capitals run on VPs',t:'Hong Kong (3.8×) and Luxembourg (3.6×) are stacked with vice-presidents and partners - the seniority signature of a financial centre.',c:'#DBB67D'},
+    {b:'Asia tilts senior',t:'South Korea leads on C-level, while Hong Kong and Japan carry the deepest VP and partner tiers - established leadership, not early-career talent.',c:'#4B5BCB'}
+  ],
   spots:[
     {g:'Software eng.',sub:'software engineer, devops engineer, full-stack developer',items:[{c:'Romania',x:'2.9×',hot:1},{c:'Israel',x:'2.3×'},{c:'Ukraine',x:'2.2×'}]},
     {g:'Data & AI',sub:'data scientist, machine learning engineer, AI engineer',items:[{c:'Greece',x:'2.5×',hot:1},{c:'Turkey',x:'2.0×'},{c:'Egypt',x:'1.9×'}]},
@@ -431,15 +438,16 @@ DATA.youngjobs.forEach(d=>{const swe=d[1],da=d[2],dai=d[3],oth=Math.max(0,100-sw
 document.getElementById('ylegend').innerHTML=[['#0F1374','Software engineering'],['#DBB67D','Data & analytics'],['#4B5BCB','Data & AI'],['#CDD0E6','Everything else']].map(l=>'<span><i style="background:'+l[0]+'"></i>'+l[1]+'</span>').join('');
 const tr=document.getElementById('titlerows');
 DATA.titles.forEach(t=>{const row=document.createElement('div');row.className='titlerow';row.innerHTML='<span class="r">'+t[0]+'</span><span class="t">'+t[1]+'</span><span class="g">every region</span>';tr.appendChild(row);});
-const pat=document.getElementById('patterns');
-DATA.patterns.forEach(p=>{const el=document.createElement('div');el.className='pat';el.style.borderTopColor=p.c;el.innerHTML='<b>'+p.b+'</b><span>'+p.t+'</span>';pat.appendChild(el);});
+function renderPatterns(el,arr){arr.forEach(p=>{const d=document.createElement('div');d.className='pat';d.style.borderTopColor=p.c;d.innerHTML='<b>'+p.b+'</b><span>'+p.t+'</span>';el.appendChild(d);});}
+renderPatterns(document.getElementById('patterns'),DATA.patterns);
+renderPatterns(document.getElementById('senpatterns'),DATA.senpatterns);
 function renderCards(el,arr){arr.forEach(g=>{const c=document.createElement('div');c.className='spotcard';let h='<b>'+g.g+'</b>'+(g.sub?'<span class="cardsub">'+g.sub+'</span>':'')+'<div class="pills">';g.items.forEach(it=>{h+='<span class="pill'+(it.hot?' hot':'')+'"><span class="c">'+it.c+'</span><span class="x">'+it.x+'</span></span>';});c.innerHTML=h+'</div>';el.appendChild(c);});}
 renderCards(document.getElementById('spotfunc'),DATA.spots);
 renderCards(document.getElementById('sencards'),DATA.sencards);
 const SENCOL=[['#ECEDF7','Interns','#23264D'],['#D7DAEF','Specialists / ICs','#23264D'],['#BEC2E6','Seniors','#23264D'],['#969CDB','Managers','#23264D'],['#6B73C6','Directors & heads','#fff'],['#4B5BCB','VPs & partners','#fff'],['#262C82','C-level','#fff'],['#0F1374','Founders','#fff']];
 const sb=document.getElementById('senbars');
 DATA.seniority.forEach(d=>{const row=document.createElement('div');row.className='ybarrow';let segs='';
-  d[1].forEach((v,i)=>{segs+='<span class="seg" title="'+SENCOL[i][1]+': '+v+'%" style="width:'+v+'%;background:'+SENCOL[i][0]+';color:'+SENCOL[i][2]+'">'+(v>=10?v+'%':'')+'</span>';});
+  d[1].forEach((v,i)=>{segs+='<span class="seg" title="'+SENCOL[i][1]+': '+v+'%" style="width:'+v+'%;background:'+SENCOL[i][0]+';color:'+SENCOL[i][2]+'">'+(v>=3?v+'%':'')+'</span>';});
   row.innerHTML='<div class="ylab">'+d[0]+'</div><div class="ybar">'+segs+'</div>';sb.appendChild(row);});
 document.getElementById('senlegend').innerHTML=SENCOL.map(c=>'<span><i style="background:'+c[0]+'"></i>'+c[1]+'</span>').join('');
 
